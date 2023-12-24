@@ -12,7 +12,6 @@ body{
     display: flex;
     flex-direction: column;
     height: 100vh;
-    /* max-width: fit-content; */
     justify-content: center;
     align-items: center;
     margin: 10%;
@@ -20,7 +19,6 @@ body{
 .main{
     display: inline-flex;
     flex-direction: column;
-    /* min-width: max-content; */
     width: 100%;
     max-width: 600px;
 }
@@ -68,26 +66,26 @@ body{
 @media only screen and (max-width: 600px) {
 
     .balance {
-        padding: 20px; /* Adjust padding for mobile */
+        padding: 20px;
     }
 
     .mybal h1 {
-        font-size: 1.4rem; /* Adjust font size for mobile */
+        font-size: 1.4rem;
     }
 
     .spending {
-        padding: 20px; /* Adjust padding for mobile */
+        padding: 20px;
     }
 
     .seg2 {
-        margin: 20px 0; /* Adjust margin for mobile */
+        margin: 20px 0;
     }
 
     .seg3 {
-        align-items: center; /* Adjust alignment for mobile */
+        align-items: center;
     }
 
     .seg3 h1, .seg3 h4 {
-        text-align: center; /* Adjust text alignment for mobile */
+        text-align: center;
     }
 }
