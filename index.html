@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Expenses chart component</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; margin-top: 20px; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+<div class="main">
+
+  <div class="balance">
+    <div class="mybal">
+      <p>My balance</p>
+      <h1>$921.48</h1>
+    </div>
+    <div class="logo">
+      <img src="images/logo.svg" alt="logo" srcset="">
+    </div>
+  </div>
+  <div class="spending">
+    <div class="seg1">
+      <h1>Spending - last 7 Days</h1>
+    </div>
+   <div class="seg2">
+    <article>
+      <canvas id="barChart"  width="400" height="200"></canvas>
+    </article>
+  </div>
+    <div class="seg3">
+  
+      <div class="perMonth">
+        <p>Total this month</p>
+        <h1 class="amount">$478.33</h1>
+      </div>
+      <div class="compair">
+        <h4>+2.4%</h4>
+        <p>From last month</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+  fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+      const days = data.map(entry => entry.day);
+      const amounts = data.map(entry => entry.amount);
+
+      const ctx = document.getElementById('barChart').getContext('2d');
+      const myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: days,
+          datasets: [
+            {
+              label: 'Daily Expenses',
+              backgroundColor: 'hsl(10, 79%, 65%)',
+              borderRadius: 5,
+              borderWidth: 1,
+              hoverBackgroundColor: 'hsl(186, 34%, 60%)',
+              data: amounts,
+              barThickness: calculateBarThickness(),               
+              categorySpacing: 5,
+            }
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              display: false,
+              beginAtZero: true,
+            },
+             x: {
+              grid: {
+                display: false, 
+              },
+            },
+          },
+          plugins: {
+            tooltip: {
+              enabled: true,
+              mode: 'index', 
+              intersect: false,
+            },
+          },
+          hover: {
+            mode: 'index',
+            intersect: false,
+          },
+          interaction: {
+            mode: 'index',
+            intersect: false,
+          },
+        },
+      });
+     window.addEventListener('resize', () => {
+        myBarChart.options.data.datasets[0].barThickness = calculateBarThickness();
+        myBarChart.update();
+      });
+
+      function calculateBarThickness() {
+        if (window.innerWidth < 600) {
+          return 30;
+        } else {
+          return 40;
+        }
+      }
+    })
+    .catch(error => console.error('Error fetching data:', error));
+</script>
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">patel Meshv</a>.
+  </div>
+</body>
+</html>
