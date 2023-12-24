@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: myfont;
+    src: url(DM_Sans/DMSans-VariableFont_opsz\,wght.ttf);
+}
+body{
+    background-color:  hsl(27, 66%, 92%);
+    font-family: myfont;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* max-width: fit-content; */
+    justify-content: center;
+    align-items: center;
+    margin: 10%;
+}
+.main{
+    display: inline-flex;
+    flex-direction: column;
+    /* min-width: max-content; */
+    width: 100%;
+    max-width: 600px;
+}
+.balance{
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 13px 20px;
+    background-color: hsl(10, 79%, 65%);
+    color: white;
+    border-radius: 10px;
+    align-items: center;
+}
+.mybal h1{
+    margin-top: 5px;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+.spending{
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+.seg1 h1, .seg3 h1, .seg3 h4{
+    font-weight: 400;
+}
+.seg2{
+    margin: 20px 0;
+    border-bottom: 2px solid rgb(215, 215, 215);
+}
+.seg3{
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.seg3 p{
+    color: rgb(144, 144, 144);
+}
+.seg3 .compair{
+    text-align: end;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .balance {
+        padding: 20px; /* Adjust padding for mobile */
+    }
+
+    .mybal h1 {
+        font-size: 1.4rem; /* Adjust font size for mobile */
+    }
+
+    .spending {
+        padding: 20px; /* Adjust padding for mobile */
+    }
+
+    .seg2 {
+        margin: 20px 0; /* Adjust margin for mobile */
+    }
+
+    .seg3 {
+        align-items: center; /* Adjust alignment for mobile */
+    }
+
+    .seg3 h1, .seg3 h4 {
+        text-align: center; /* Adjust text alignment for mobile */
+    }
+}
